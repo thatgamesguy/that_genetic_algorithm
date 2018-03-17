@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
 
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # Compiled Object files
 *.slo
 *.lo
