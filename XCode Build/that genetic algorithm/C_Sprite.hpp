@@ -18,6 +18,10 @@ public:
     void LateUpdate(float deltaTime) override;
     void Draw(Window& window) override;
     
+    void SetRotation(float angle);
+    
+    void SetCenter(float x, float y);
+    
 private:
     ResourceAllocator<sf::Texture>* allocator;
     sf::Sprite sprite;

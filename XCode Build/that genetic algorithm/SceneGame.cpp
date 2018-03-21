@@ -1,20 +1,50 @@
 #include "SceneGame.hpp"
 
-SceneGame::SceneGame(WorkingDirectory& workingDir) : workingDir(workingDir)
-{
-    
-}
+SceneGame::SceneGame(WorkingDirectory& workingDir, ResourceAllocator<sf::Texture>& textureAllocator)
+: workingDir(workingDir), textureAllocator(textureAllocator) { }
 
 void SceneGame::OnCreate()
 {
-    std::shared_ptr<Object> player = std::make_shared<Object>();
+    const int minX = 50;
+    const int minY = 50;
     
-    auto sprite = player->AddComponent<C_Sprite>();
-    sprite->SetTextureAllocator(&textureAllocator);
-    sprite->Load(workingDir.Get() + "viking.png");
+    const int maxX = 750;
+    const int maxY = 550;
+    
+    // Initialise UFOs
+    const std::string spritePreName = "ufo";
+    const std::string spritePostName = ".png";
+    
+    for (int i = 0; i < 30; i++)
+    {
+        std::shared_ptr<Object> ufo = std::make_shared<Object>();
+        
+        auto sprite = ufo->AddComponent<C_Sprite>();
+        sprite->SetTextureAllocator(&textureAllocator);
+        const std::string ufoCount = std::to_string(1 + (std::rand() % (4 - 1 + 1)));
+        sprite->Load(workingDir.Get() + spritePreName + ufoCount + spritePostName);
+        
+        const int randX = minX + (std::rand() % (maxX - minX + 1));
+        const int randY = minY + (std::rand() % (maxY - minY + 1));
+        ufo->transform->SetPosition(randX, randY);
+        
+        objects.Add(ufo);
+    }
+    
+    // Inlitialise Player
+    std::shared_ptr<Object> player = std::make_shared<Object>();
     
     auto movement = player->AddComponent<C_KeyboardMovement>();
     movement->SetInput(&input);
+    
+    auto sprite = player->AddComponent<C_Sprite>();
+    sprite->SetTextureAllocator(&textureAllocator);
+    sprite->Load(workingDir.Get() + "playerShip.png");
+    sprite->SetCenter(34.5f, 26.5f);
+    
+    const int randX = minX + (std::rand() % (maxX - minX + 1));
+    const int randY = minY + (std::rand() % (maxY - minY + 1));
+    player->transform->SetPosition(randX, randY);
     
     objects.Add(player);
 }

@@ -40,3 +40,13 @@ void C_Sprite::Draw(Window& window)
 {
     window.Draw(sprite);
 }
+
+void C_Sprite::SetRotation(float angle)
+{
+    sprite.setRotation(angle);
+}
+
+void C_Sprite::SetCenter(float x, float y)
+{
+    sprite.setOrigin(x, y);
+}
