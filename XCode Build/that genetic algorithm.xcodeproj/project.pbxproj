@@ -14,6 +14,7 @@
 		E17473722063B1A600D8333A /* NeuronLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473702063B1A600D8333A /* NeuronLayer.cpp */; };
 		E17473752063B2D400D8333A /* NeuralNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473732063B2D400D8333A /* NeuralNetwork.cpp */; };
 		E17473782063E78C00D8333A /* C_InstanceID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473762063E78C00D8333A /* C_InstanceID.cpp */; };
+		E174737B2063FDB600D8333A /* GeneticAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473792063FDB600D8333A /* GeneticAlgorithm.cpp */; };
 		E185FF6A205D0C680019DE3D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185FF69205D0C670019DE3D /* CoreFoundation.framework */; };
 		E1897FF4206263650092E575 /* C_Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1897FDA206263620092E575 /* C_Transform.cpp */; };
 		E1897FF5206263650092E575 /* SceneStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1897FDB206263620092E575 /* SceneStateMachine.cpp */; };
@@ -54,6 +55,8 @@
 		E17473742063B2D400D8333A /* NeuralNetwork.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NeuralNetwork.hpp; sourceTree = "<group>"; };
 		E17473762063E78C00D8333A /* C_InstanceID.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_InstanceID.cpp; sourceTree = "<group>"; };
 		E17473772063E78C00D8333A /* C_InstanceID.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_InstanceID.hpp; sourceTree = "<group>"; };
+		E17473792063FDB600D8333A /* GeneticAlgorithm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GeneticAlgorithm.cpp; sourceTree = "<group>"; };
+		E174737A2063FDB600D8333A /* GeneticAlgorithm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GeneticAlgorithm.hpp; sourceTree = "<group>"; };
 		E185FF69205D0C670019DE3D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E1897FD6206263610092E575 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		E1897FD7206263610092E575 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 		E189801020626F670092E575 /* Genetic Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				E17473792063FDB600D8333A /* GeneticAlgorithm.cpp */,
+				E174737A2063FDB600D8333A /* GeneticAlgorithm.hpp */,
 			);
 			name = "Genetic Algorithm";
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				E1897FFA206263650092E575 /* Game.cpp in Sources */,
 				E1897FFC206263650092E575 /* Object.cpp in Sources */,
 				E17473752063B2D400D8333A /* NeuralNetwork.cpp in Sources */,
+				E174737B2063FDB600D8333A /* GeneticAlgorithm.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

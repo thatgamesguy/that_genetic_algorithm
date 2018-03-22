@@ -6,13 +6,13 @@ NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeu
     layers.push_back(NeuronLayer(numOfNeuronsInHiddenLayers, numOfInput));
     
     // Create any other subsequent hidden layers
-    for (int i = 0; i < numOfHiddenLayers - 1; i++)
+    for (int i = 0; i < numOfHiddenLayers; i++)
     {
         // Input from first hidden layer
         layers.push_back(NeuronLayer(numOfNeuronsInHiddenLayers,
                                      numOfNeuronsInHiddenLayers));
     }
-    
+
     // Output layer
     // Input from subsequent or first hidden layer
     layers.push_back(NeuronLayer(numOfOutput, numOfNeuronsInHiddenLayers));
@@ -35,7 +35,7 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
     }
     
     // Each layer
-    for (int i = 0; i < numOfHiddenLayers + 1; i++)
+    for (int i = 0; i < layers.size(); i++)
     {
         if (i > 0)
         {
@@ -48,14 +48,14 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
         
         weightCount = 0;
         
-        for (int j = 0; j < layers[i].numOfNeurons; ++j)
+        for (int j = 0; j < layers[i].numOfNeurons; j++)
         {
             float netInput = 0.0f;
             
-            int NumInputs = layers[i].neurons[j].numOfInput;
+            int numInputs = layers[i].neurons[j].numOfInput;
             
             // Each weight
-            for (int k = 0; k < NumInputs - 1; ++k)
+            for (int k = 0; k < numInputs - 1; k++)
             {
                 // Sum the weights x inputs
                 netInput += layers[i].neurons[j].weights[k] *
@@ -63,10 +63,11 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
             }
             
             //Add in the bias
-            netInput += layers[i].neurons[j].weights[numOfInput - 1] * bias;
+            netInput += layers[i].neurons[j].weights[numInputs - 1] * bias;
             
             //Store result in output
-            outputs.push_back(ToSigmoid(netInput));
+            float sigOutput = ToSigmoid(netInput);
+            outputs.push_back(sigOutput);
             
             weightCount = 0;
         }
@@ -75,7 +76,7 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
     return outputs;
 }
 
-std::vector<float> NeuralNetwork::GetWeights()
+std::vector<float> NeuralNetwork::GetWeights() const
 {
     std::vector<float> weights;
     
@@ -116,7 +117,7 @@ void NeuralNetwork::SetWeights(const std::vector<float>& weights)
     }
 }
 
-int NeuralNetwork::GetNumberOfWeights()
+int NeuralNetwork::GetNumberOfWeights() const
 {
     int weights = 0;
     

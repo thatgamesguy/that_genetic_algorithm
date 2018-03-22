@@ -22,7 +22,7 @@ void SceneGame::OnCreate()
     auto sprite = player->AddComponent<C_Sprite>();
     sprite->SetTextureAllocator(&textureAllocator);
     sprite->Load(workingDir.Get() + "playerShip.png");
-    sprite->SetCenter(20.f, 26.f);
+    sprite->SetCenter(26.5f, 34.5f);
     
     const int randX = minX + (std::rand() % (maxX - minX + 1));
     const int randY = minY + (std::rand() % (maxY - minY + 1));

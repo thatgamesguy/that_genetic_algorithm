@@ -1,6 +1,6 @@
 #include "NeuralNetwork.hpp"
 
-NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeuronsInHiddenLayers, int numOfOutput) : numOfInput(numOfInput), numOfHiddenLayers(numOfHiddenLayers), numOfNeuronsPerHiddenLayer(numOfNeuronsPerHiddenLayer), numOfOutput(numOfOutput), bias(1)
+NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeuronsInHiddenLayers, int numOfOutput) : numOfInput(numOfInput), numOfHiddenLayers(numOfHiddenLayers), numOfNeuronsInHiddenLayers(numOfNeuronsInHiddenLayers), numOfOutput(numOfOutput), bias(1)
 {
     // Create first layer
     layers.push_back(NeuronLayer(numOfNeuronsInHiddenLayers, numOfInput));
@@ -12,7 +12,7 @@ NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeu
         layers.push_back(NeuronLayer(numOfNeuronsInHiddenLayers,
                                      numOfNeuronsInHiddenLayers));
     }
-    
+
     // Output layer
     // Input from subsequent or first hidden layer
     layers.push_back(NeuronLayer(numOfOutput, numOfNeuronsInHiddenLayers));
@@ -66,7 +66,8 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
             netInput += layers[i].neurons[j].weights[numOfInput - 1] * bias;
             
             //Store result in output
-            outputs.push_back(ToSigmoid(netInput));
+            float sigOutput = ToSigmoid(netInput);
+            outputs.push_back(sigOutput);
             
             weightCount = 0;
         }
@@ -75,7 +76,7 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
     return outputs;
 }
 
-std::vector<float> NeuralNetwork::GetWeights()
+std::vector<float> NeuralNetwork::GetWeights() const
 {
     std::vector<float> weights;
     
@@ -116,7 +117,7 @@ void NeuralNetwork::SetWeights(const std::vector<float>& weights)
     }
 }
 
-int NeuralNetwork::GetNumberOfWeights()
+int NeuralNetwork::GetNumberOfWeights() const
 {
     int weights = 0;
     
@@ -139,5 +140,5 @@ int NeuralNetwork::GetNumberOfWeights()
 
 float NeuralNetwork::ToSigmoid(float input)
 {
-    return (float) (1 / (1 + exp(-input)));
+    return static_cast<float> (1.f / (1.f + exp(-input)));
 }

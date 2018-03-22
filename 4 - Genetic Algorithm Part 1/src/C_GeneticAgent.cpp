@@ -4,7 +4,7 @@
 float C_GeneticAgent::sightRadius(100.f);
 float C_GeneticAgent::agentRadius(20.f);
 
-C_GeneticAgent::C_GeneticAgent(Object* owner) : Component(owner), maxMoveForce(1200.f), energy(100.f), energyReductionMultiplier(2.f), neuralNetwork(neuralNumOfInput, neuralNumOfHiddenLayers, neuralNumOfNeuronsInHiddenLayer, neuralNumOfOutput), energyReducedOnContact(50.f),
+C_GeneticAgent::C_GeneticAgent(Object* owner) : Component(owner), maxMoveForce(1200.f), energy(100.f), energyReductionMultiplier(5.f), neuralNetwork(neuralNumOfInput, neuralNumOfHiddenLayers, neuralNumOfNeuronsInHiddenLayer, neuralNumOfOutput), energyReducedOnContact(50.f),
 mutationRate(0.8f)
 {
     
@@ -31,10 +31,6 @@ void C_GeneticAgent::Update(float deltaTime)
     // Get output from neural network
     std::vector<float> output = neuralNetwork.GetOutput(neuralNetInput);
 
-    float x = output[0] - 0.5f;
-    float y = output[1] - 0.5f;
-    
-    /*
     float moveUp = output[0];
     float moveDown = output[1];
     float moveLeft = output[2];
@@ -43,8 +39,7 @@ void C_GeneticAgent::Update(float deltaTime)
     // If move left force is greater than the move right force then we want to move left.
     float x = moveLeft > moveRight ? -(moveLeft - moveRight) : moveRight - moveLeft;
     float y = moveUp > moveDown ? -(moveUp - moveDown) : moveDown - moveUp;
-*/
-    
+
     const sf::Vector2f move = sf::Vector2f(x, y) * maxMoveForce * deltaTime;
     
     velocity->Set(move);

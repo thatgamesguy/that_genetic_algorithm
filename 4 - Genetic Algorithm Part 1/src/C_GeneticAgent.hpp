@@ -47,7 +47,7 @@ private:
     const int neuralNumOfInput = 8;
     const int neuralNumOfHiddenLayers = 1;
     const int neuralNumOfNeuronsInHiddenLayer = 10;
-    const int neuralNumOfOutput = 2;
+    const int neuralNumOfOutput = 4;
 
     float maxMoveForce;
     std::shared_ptr<C_Velocity> velocity;
