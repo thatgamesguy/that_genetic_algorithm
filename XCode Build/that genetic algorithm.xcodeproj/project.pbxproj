@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E116FDA520629E2700646B52 /* C_ScreenWrapAround.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E116FDA320629E2700646B52 /* C_ScreenWrapAround.cpp */; };
+		E17473682062B56D00D8333A /* C_Velocity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473662062B56D00D8333A /* C_Velocity.cpp */; };
+		E174736B2062B93800D8333A /* C_GeneticAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473692062B93800D8333A /* C_GeneticAgent.cpp */; };
+		E174736F2063AEB900D8333A /* Neuron.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E174736D2063AEB900D8333A /* Neuron.cpp */; };
+		E17473722063B1A600D8333A /* NeuronLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473702063B1A600D8333A /* NeuronLayer.cpp */; };
+		E17473752063B2D400D8333A /* NeuralNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473732063B2D400D8333A /* NeuralNetwork.cpp */; };
+		E17473782063E78C00D8333A /* C_InstanceID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E17473762063E78C00D8333A /* C_InstanceID.cpp */; };
 		E185FF6A205D0C680019DE3D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185FF69205D0C670019DE3D /* CoreFoundation.framework */; };
 		E1897FF4206263650092E575 /* C_Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1897FDA206263620092E575 /* C_Transform.cpp */; };
 		E1897FF5206263650092E575 /* SceneStateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1897FDB206263620092E575 /* SceneStateMachine.cpp */; };
@@ -31,8 +38,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E116FDA320629E2700646B52 /* C_ScreenWrapAround.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_ScreenWrapAround.cpp; sourceTree = "<group>"; };
+		E116FDA420629E2700646B52 /* C_ScreenWrapAround.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_ScreenWrapAround.hpp; sourceTree = "<group>"; };
 		E16F6F07205D0AA000486E2F /* that genetic algorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "that genetic algorithm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16F6F0B205D0AA000486E2F /* that genetic algorithm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "that genetic algorithm-Info.plist"; sourceTree = "<group>"; };
+		E17473662062B56D00D8333A /* C_Velocity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_Velocity.cpp; sourceTree = "<group>"; };
+		E17473672062B56D00D8333A /* C_Velocity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_Velocity.hpp; sourceTree = "<group>"; };
+		E17473692062B93800D8333A /* C_GeneticAgent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_GeneticAgent.cpp; sourceTree = "<group>"; };
+		E174736A2062B93800D8333A /* C_GeneticAgent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_GeneticAgent.hpp; sourceTree = "<group>"; };
+		E174736D2063AEB900D8333A /* Neuron.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Neuron.cpp; sourceTree = "<group>"; };
+		E174736E2063AEB900D8333A /* Neuron.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Neuron.hpp; sourceTree = "<group>"; };
+		E17473702063B1A600D8333A /* NeuronLayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NeuronLayer.cpp; sourceTree = "<group>"; };
+		E17473712063B1A600D8333A /* NeuronLayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NeuronLayer.hpp; sourceTree = "<group>"; };
+		E17473732063B2D400D8333A /* NeuralNetwork.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NeuralNetwork.cpp; sourceTree = "<group>"; };
+		E17473742063B2D400D8333A /* NeuralNetwork.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NeuralNetwork.hpp; sourceTree = "<group>"; };
+		E17473762063E78C00D8333A /* C_InstanceID.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_InstanceID.cpp; sourceTree = "<group>"; };
+		E17473772063E78C00D8333A /* C_InstanceID.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_InstanceID.hpp; sourceTree = "<group>"; };
 		E185FF69205D0C670019DE3D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E1897FD6206263610092E575 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		E1897FD7206263610092E575 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
@@ -104,6 +125,7 @@
 		E16F6F09205D0AA000486E2F /* that genetic algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				E174736C2063AEA600D8333A /* ANN */,
 				E189801020626F670092E575 /* Genetic Algorithm */,
 				E1898007206263CE0092E575 /* Scenes */,
 				E1898006206263B10092E575 /* ECS */,
@@ -150,6 +172,19 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		E174736C2063AEA600D8333A /* ANN */ = {
+			isa = PBXGroup;
+			children = (
+				E174736D2063AEB900D8333A /* Neuron.cpp */,
+				E174736E2063AEB900D8333A /* Neuron.hpp */,
+				E17473702063B1A600D8333A /* NeuronLayer.cpp */,
+				E17473712063B1A600D8333A /* NeuronLayer.hpp */,
+				E17473732063B2D400D8333A /* NeuralNetwork.cpp */,
+				E17473742063B2D400D8333A /* NeuralNetwork.hpp */,
+			);
+			name = ANN;
+			sourceTree = "<group>";
+		};
 		E185FF68205D0C670019DE3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +203,14 @@
 				E1897FDA206263620092E575 /* C_Transform.cpp */,
 				E1897FEE206263640092E575 /* C_Transform.hpp */,
 				E1897FD9206263610092E575 /* Component.hpp */,
+				E116FDA320629E2700646B52 /* C_ScreenWrapAround.cpp */,
+				E116FDA420629E2700646B52 /* C_ScreenWrapAround.hpp */,
+				E17473662062B56D00D8333A /* C_Velocity.cpp */,
+				E17473672062B56D00D8333A /* C_Velocity.hpp */,
+				E17473692062B93800D8333A /* C_GeneticAgent.cpp */,
+				E174736A2062B93800D8333A /* C_GeneticAgent.hpp */,
+				E17473762063E78C00D8333A /* C_InstanceID.cpp */,
+				E17473772063E78C00D8333A /* C_InstanceID.hpp */,
 			);
 			name = ECS;
 			sourceTree = "<group>";
@@ -283,20 +326,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E174736B2062B93800D8333A /* C_GeneticAgent.cpp in Sources */,
+				E116FDA520629E2700646B52 /* C_ScreenWrapAround.cpp in Sources */,
 				E1897FF7206263650092E575 /* ObjectCollection.cpp in Sources */,
 				E1897FFD206263650092E575 /* Window.cpp in Sources */,
 				E1897FF9206263650092E575 /* C_KeyboardMovement.cpp in Sources */,
 				E1897FFF206263650092E575 /* SceneSplashScreen.cpp in Sources */,
 				E1897FF6206263650092E575 /* Input.cpp in Sources */,
 				E1897FF5206263650092E575 /* SceneStateMachine.cpp in Sources */,
+				E17473722063B1A600D8333A /* NeuronLayer.cpp in Sources */,
 				E1898001206263650092E575 /* SceneGame.cpp in Sources */,
 				E1897FF4206263650092E575 /* C_Transform.cpp in Sources */,
 				E1897FFE206263650092E575 /* Main.cpp in Sources */,
 				E1898000206263650092E575 /* Bitmask.cpp in Sources */,
+				E17473682062B56D00D8333A /* C_Velocity.cpp in Sources */,
 				E1897FF8206263650092E575 /* WorkingDirectory.cpp in Sources */,
+				E174736F2063AEB900D8333A /* Neuron.cpp in Sources */,
 				E1897FFB206263650092E575 /* C_Sprite.cpp in Sources */,
+				E17473782063E78C00D8333A /* C_InstanceID.cpp in Sources */,
 				E1897FFA206263650092E575 /* Game.cpp in Sources */,
 				E1897FFC206263650092E575 /* Object.cpp in Sources */,
+				E17473752063B2D400D8333A /* NeuralNetwork.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +446,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GSVX5LD945;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "that genetic algorithm/that genetic algorithm-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = (
@@ -411,6 +462,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GSVX5LD945;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "that genetic algorithm/that genetic algorithm-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_CFLAGS = (
