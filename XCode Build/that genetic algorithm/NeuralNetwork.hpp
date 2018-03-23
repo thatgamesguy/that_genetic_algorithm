@@ -11,7 +11,7 @@ class NeuralNetwork
 public:
     NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeuronsInHiddenLayers, int numOfOutput);
     
-    std::vector<float> GetOutput(std::vector<float>& input);
+    std::vector<float> GetOutput(const std::vector<float>& input);
     
     std::vector<float> GetWeights() const;
     void SetWeights(const std::vector<float>& weights);
@@ -24,7 +24,7 @@ public:
     int numOfNeuronsInHiddenLayers; // Number of neurons per hidden layer
     
 private:
-    float ToSigmoid(float input);
+    float FastSigmoid(float input);
     
     std::vector<NeuronLayer> layers;
     int bias;

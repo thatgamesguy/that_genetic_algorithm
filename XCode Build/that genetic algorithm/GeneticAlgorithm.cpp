@@ -52,14 +52,24 @@ bool GeneticAlgorithm::PoolSort(std::shared_ptr<C_GeneticAgent> a, std::shared_p
 
 void GeneticAlgorithm::Update(float deltaTime)
 {
-    std::vector<std::shared_ptr<Object>>& objects = agents.GetObjects();
+    const int maxNewInAFrame = 1;
+    int currentNew = 0;
     
+    std::vector<std::shared_ptr<Object>>& objects = agents.GetObjects();
+
     for(auto& o : objects)
     {
+        if(currentNew >= maxNewInAFrame)
+        {
+            return;
+        }
+        
         auto geneticAgent = o->GetComponent<C_GeneticAgent>();
         
         if(geneticAgent->GetEnergy() <= 0)
         {
+            currentNew++;
+            
             AddToPool(geneticAgent);
             
             CalculateTotalFitness();
@@ -150,16 +160,16 @@ NeuralNetwork GeneticAlgorithm::CreateNeuralNetworkFromCrossOver(const NeuralNet
     std::vector<float> parentOneWeights = networkOne.GetWeights();
     std::vector<float> parentTwoWeights = networkTwo.GetWeights();
     
-    int crossOverPoint = parentOneWeights.size() * crossOverPoint;
+    int crossOver = parentOneWeights.size() * crossOverPoint;
     
     std::vector<float> newWeights;
     
-    for (int i = 0; i < crossOverPoint; i++)
+    for (int i = 0; i < crossOver; i++)
     {
         newWeights.push_back(parentOneWeights[i]);
     }
     
-    for (int i = crossOverPoint; i < parentOneWeights.size(); i++)
+    for (int i = crossOver; i < parentOneWeights.size(); i++)
     {
         newWeights.push_back(parentTwoWeights[i]);
     }

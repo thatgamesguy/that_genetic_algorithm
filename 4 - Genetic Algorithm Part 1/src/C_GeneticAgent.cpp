@@ -128,7 +128,7 @@ std::vector<float> C_GeneticAgent::CalculateNetworkInput(std::vector<AgentPositi
         
         if(angle < 0)
         {
-            index += 4; // This converts it to an index representing a minus angle.
+            index += (neuralNumOfInput / 2); // This converts it to an index representing a minus angle.
         }
         
         // We need to convert the distance to a number between 0 and 1 to be used as input.

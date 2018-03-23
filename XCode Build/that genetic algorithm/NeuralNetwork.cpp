@@ -1,6 +1,6 @@
 #include "NeuralNetwork.hpp"
 
-NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeuronsInHiddenLayers, int numOfOutput) : numOfInput(numOfInput), numOfHiddenLayers(numOfHiddenLayers), numOfNeuronsInHiddenLayers(numOfNeuronsInHiddenLayers), numOfOutput(numOfOutput), bias(1)
+NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeuronsInHiddenLayers, int numOfOutput) : numOfInput(numOfInput), numOfHiddenLayers(numOfHiddenLayers), numOfNeuronsInHiddenLayers(numOfNeuronsInHiddenLayers), numOfOutput(numOfOutput), bias(-1)
 {
     // Create first layer
     layers.push_back(NeuronLayer(numOfNeuronsInHiddenLayers, numOfInput));
@@ -18,7 +18,7 @@ NeuralNetwork::NeuralNetwork(int numOfInput, int numOfHiddenLayers, int numOfNeu
     layers.push_back(NeuronLayer(numOfOutput, numOfNeuronsInHiddenLayers));
 }
 
-std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
+std::vector<float> NeuralNetwork::GetOutput(const std::vector<float>& input)
 {
     std::vector<float> inputList(input);
     
@@ -42,12 +42,10 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
             // Clear input and add output from previous layer
             inputList.clear();
             inputList.insert(inputList.end(), outputs.begin(), outputs.end());
+            outputs.clear();
+            weightCount = 0;
         }
-        
-        outputs.clear();
-        
-        weightCount = 0;
-        
+
         for (int j = 0; j < layers[i].numOfNeurons; j++)
         {
             float netInput = 0.0f;
@@ -66,8 +64,8 @@ std::vector<float> NeuralNetwork::GetOutput(std::vector<float>& input)
             netInput += layers[i].neurons[j].weights[numInputs - 1] * bias;
             
             //Store result in output
-            float sigOutput = ToSigmoid(netInput);
-            outputs.push_back(sigOutput);
+            float sigOutput = FastSigmoid(netInput);
+            outputs.push_back(netInput);
             
             weightCount = 0;
         }
@@ -138,7 +136,7 @@ int NeuralNetwork::GetNumberOfWeights() const
     return weights;
 }
 
-float NeuralNetwork::ToSigmoid(float input)
+float NeuralNetwork::FastSigmoid(float input)
 {
-    return static_cast<float> (1.f / (1.f + exp(-input)));
+    return input / (1 + fabs(input));
 }

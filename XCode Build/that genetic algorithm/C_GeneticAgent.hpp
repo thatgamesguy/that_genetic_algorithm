@@ -8,6 +8,7 @@
 
 struct AgentPositionData
 {
+    sf::Vector2f position;
     sf::Vector2f heading;
     float distance;
 };
@@ -40,11 +41,12 @@ private:
     std::vector<float> CalculateNetworkInput(std::vector<AgentPositionData> positionData);
     float Magnitude(const sf::Vector2f& a);
     void ApplyDamageOnCollision(std::vector<AgentPositionData> agentsInSight, float deltaTime);
+    sf::Vector2f GetClosestAgentPosition(std::vector<AgentPositionData> agentsInSight);
     
     static float sightRadius;
     static float agentRadius;
     
-    const int neuralNumOfInput = 8;
+    const int neuralNumOfInput = 2;
     const int neuralNumOfHiddenLayers = 1;
     const int neuralNumOfNeuronsInHiddenLayer = 10;
     const int neuralNumOfOutput = 2;

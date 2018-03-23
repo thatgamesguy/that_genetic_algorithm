@@ -19,6 +19,10 @@ public:
     
     void Set(const sf::Vector2f& vel);
     
+    const sf::Vector2f& Get() const;
+    
+    void AddForce(const sf::Vector2f& force);
+    
 private:
     void UpdateAngle();
     void Clamp();
@@ -28,6 +32,8 @@ private:
     float damping;
     sf::Vector2f maxVelocity;
     std::shared_ptr<C_Sprite> sprite;
+    sf::Vector2f force;
+    float mass;
 };
 
 #endif /* C_Velocity_hpp */

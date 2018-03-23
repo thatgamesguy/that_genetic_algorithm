@@ -1,11 +1,11 @@
 #include "C_GeneticAgent.hpp"
 #include "Object.hpp"
 
-float C_GeneticAgent::sightRadius(100.f);
+float C_GeneticAgent::sightRadius(120.f);
 float C_GeneticAgent::agentRadius(20.f);
 
-C_GeneticAgent::C_GeneticAgent(Object* owner) : Component(owner), maxMoveForce(1200.f), energy(100.f), energyReductionMultiplier(2.f), neuralNetwork(neuralNumOfInput, neuralNumOfHiddenLayers, neuralNumOfNeuronsInHiddenLayer, neuralNumOfOutput), energyReducedOnContact(50.f),
-mutationRate(0.8f)
+C_GeneticAgent::C_GeneticAgent(Object* owner) : Component(owner), maxMoveForce(80.f), energy(100.f), energyReductionMultiplier(0.2f), neuralNetwork(neuralNumOfInput, neuralNumOfHiddenLayers, neuralNumOfNeuronsInHiddenLayer, neuralNumOfOutput), energyReducedOnContact(100.f),
+mutationRate(0.5f)
 {
     
 }
@@ -17,22 +17,31 @@ void C_GeneticAgent::Awake()
 
 void C_GeneticAgent::Update(float deltaTime)
 {
-    if(energy > 0)
+    if(energy <= 0)
     {
-        timeAlive += deltaTime;
+        return;
     }
+    
+    timeAlive += deltaTime;
     
     std::vector<AgentPositionData> agentsInSight = GetAgentsInSight();
     
     ApplyDamageOnCollision(agentsInSight, deltaTime);
     
-    std::vector<float> neuralNetInput = CalculateNetworkInput(agentsInSight);
+    //std::vector<float> neuralNetInput = CalculateNetworkInput(agentsInSight);
+    
+    sf::Vector2f closestAgentPos = GetClosestAgentPosition(agentsInSight);
+    std::vector<float> neuralNetInput;
+    neuralNetInput.push_back(closestAgentPos.x);
+    neuralNetInput.push_back(closestAgentPos.y);
     
     // Get output from neural network
     std::vector<float> output = neuralNetwork.GetOutput(neuralNetInput);
 
-    float x = output[0] - 0.5f;
-    float y = output[1] - 0.5f;
+    float x = output[0];
+    float y = output[1];
+
+    //use velocity normal as input?
     
     /*
     float moveUp = output[0];
@@ -40,14 +49,19 @@ void C_GeneticAgent::Update(float deltaTime)
     float moveLeft = output[2];
     float moveRight = output[3];
     
+    //float x = moveLeft > moveRight ? -moveLeft : moveRight;
+    //float y = moveUp > moveDown ? -moveUp : moveDown;
+    
     // If move left force is greater than the move right force then we want to move left.
     float x = moveLeft > moveRight ? -(moveLeft - moveRight) : moveRight - moveLeft;
     float y = moveUp > moveDown ? -(moveUp - moveDown) : moveDown - moveUp;
-*/
+    */
     
     const sf::Vector2f move = sf::Vector2f(x, y) * maxMoveForce * deltaTime;
     
-    velocity->Set(move);
+    velocity->Add(move);
+    
+   // const sf::Vector2f vel = velocity->Get();
     
     // We sum all forces when calculating energy reduction.
     float energyReduction = (fabs(x) + fabs(y)) * energyReductionMultiplier * deltaTime;
@@ -96,11 +110,12 @@ std::vector<AgentPositionData> C_GeneticAgent::GetAgentsInSight()
             
             if(distance < sightRadius)
             {
-                AgentPositionData agentPosition;
-                agentPosition.heading = heading;
-                agentPosition.distance = distance;
+                AgentPositionData data;
+                data.position = otherPos;
+                data.heading = heading;
+                data.distance = distance;
                 
-                positionData.push_back(agentPosition);
+                positionData.push_back(data);
             }
         }
     }
@@ -133,7 +148,7 @@ std::vector<float> C_GeneticAgent::CalculateNetworkInput(std::vector<AgentPositi
         
         if(angle < 0)
         {
-            index += 4; // This converts it to an index representing a minus angle.
+            index += (neuralNumOfInput / 2); // This converts it to an index representing a minus angle.
         }
         
         // We need to convert the distance to a number between 0 and 1 to be used as input.
@@ -168,6 +183,31 @@ void C_GeneticAgent::ApplyDamageOnCollision(std::vector<AgentPositionData> agent
             energy -= energyReducedOnContact * deltaTime;
         }
     }
+}
+
+sf::Vector2f C_GeneticAgent::GetClosestAgentPosition(std::vector<AgentPositionData> agentsInSight)
+{
+    float distance = MAXFLOAT;
+    AgentPositionData* found = nullptr;
+    
+    for (int i = 0; i < agentsInSight.size(); i++)
+    {
+        AgentPositionData& data = agentsInSight[i];
+        
+        if(data.distance < distance)
+        {
+            found = &data;
+            distance = data.distance;
+        }
+    }
+    
+    if(found != nullptr)
+    {
+        sf::Vector2f dir = found->heading / found->distance;
+        return dir;
+    }
+    
+    return sf::Vector2f(0.f, 0.f);
 }
 
 float C_GeneticAgent::GetTimeAlive() const

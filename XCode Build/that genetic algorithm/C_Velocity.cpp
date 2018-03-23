@@ -1,7 +1,7 @@
 #include "C_Velocity.hpp"
 #include "Object.hpp"
 
-C_Velocity::C_Velocity(Object* owner) : Component(owner), velocity(0.f, 0.f), damping(0.49f), maxVelocity(280.f, 280.f) {}
+C_Velocity::C_Velocity(Object* owner) : Component(owner), velocity(0.f, 0.f), damping(0.49f), maxVelocity(180.f, 180.f), mass(2.f) {}
 
 void C_Velocity::Awake()
 {
@@ -10,25 +10,40 @@ void C_Velocity::Awake()
 
 void C_Velocity::Update(float deltaTime)
 {
-    velocity *= powf(damping, deltaTime);
+    sf::Vector2f acceleration = force / mass;
+    velocity += acceleration * deltaTime;
     
-    UpdateAngle();
+    //UpdateAngle();
+    
+    Clamp();
     
     UpdatePosition(deltaTime);
+    
+    velocity *= powf(damping, deltaTime);
+}
+
+void C_Velocity::AddForce(const sf::Vector2f& force)
+{
+    this->force += force;
 }
 
 void C_Velocity::Add(const sf::Vector2f& vel)
 {
     velocity += vel;
     
-    Clamp();
+    //Clamp();
 }
 
 void C_Velocity::Set(const sf::Vector2f& vel)
 {
     velocity = vel;
     
-    Clamp();
+   // Clamp();
+}
+
+const sf::Vector2f& C_Velocity::Get() const
+{
+    return velocity;
 }
 
 void C_Velocity::UpdateAngle()
