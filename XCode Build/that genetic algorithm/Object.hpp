@@ -42,6 +42,8 @@ public:
     
     template <typename T> std::shared_ptr<T> GetComponent()
     {
+        static_assert(std::is_base_of<Component, T>::value, "T must derive from Component");
+        
         // Check that we don't already have a component of this type.
         for (auto& exisitingComponent : components)
         {
@@ -56,6 +58,8 @@ public:
     
     template <typename T> std::vector<std::shared_ptr<T>> GetComponents()
     {
+        static_assert(std::is_base_of<Component, T>::value, "T must derive from Component");
+        
         std::vector<std::shared_ptr<T>> components;
         
         for (auto& exisitingComponent : components)
@@ -68,6 +72,28 @@ public:
         
         return components;
     };
+    
+    template <typename T> void RemoveComponent()
+    {
+        static_assert(std::is_base_of<Component, T>::value, "T must derive from Component");
+        
+        auto componentsIt = components.begin();
+        while (componentsIt != components.end())
+        {
+            std::shared_ptr<Component> component = *componentsIt;
+            
+            if (std::dynamic_pointer_cast<T>(component))
+            {
+                components.erase(componentsIt);
+                break;
+            }
+            else
+            {
+                ++componentsIt;
+            }
+        }
+    }
+    
     
     bool IsQueuedForRemoval();
     void QueueForRemoval();

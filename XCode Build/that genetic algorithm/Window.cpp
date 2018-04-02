@@ -44,3 +44,8 @@ bool Window::IsOpen() const
 {
     return window.isOpen();
 }
+
+sf::Vector2u Window::GetSize() const
+{
+    return window.getSize();
+}

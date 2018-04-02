@@ -5,6 +5,7 @@ SceneGame::SceneGame(WorkingDirectory& workingDir, ResourceAllocator<sf::Texture
 
 void SceneGame::OnCreate()
 {
+    /*
     const int minX = 50;
     const int minY = 50;
     
@@ -29,11 +30,12 @@ void SceneGame::OnCreate()
     player->transform->SetPosition(randX, randY);
     
     auto screenWrapAround = player->AddComponent<C_ScreenWrapAround>();
-    screenWrapAround->SetSpriteHalfSize({26.5f, 35.5f});
+    screenWrapAround->SetSpriteHalfSize({20.f, 26.f});
     
     // As we are not adding player to our object collection we need to manually call the initilisation methods.
     player->Awake();
     player->Start();
+     */
 }
 
 void SceneGame::OnDestroy()
@@ -48,22 +50,22 @@ void SceneGame::ProcessInput()
 
 void SceneGame::Update(float deltaTime)
 {
-    objects.ProcessRemovals();
-    objects.ProcessNewObjects();
-    
-    player->Update(deltaTime);
+    //player->Update(deltaTime);
     objects.Update(deltaTime);
     geneticAlgorithm.Update(deltaTime);
 }
 
 void SceneGame::LateUpdate(float deltaTime)
 {
-    player->LateUpdate(deltaTime);
+    //player->LateUpdate(deltaTime);
     objects.LateUpdate(deltaTime);
+    
+    objects.ProcessRemovals();
+    objects.ProcessNewObjects();
 }
 
 void SceneGame::Draw(Window& window)
 {
-    player->Draw(window);
+    //player->Draw(window);
     objects.Draw(window);
 }

@@ -5,13 +5,7 @@
 #include "C_Velocity.hpp"
 #include "NeuralNetwork.hpp"
 #include "ObjectCollection.hpp"
-
-struct AgentPositionData
-{
-    sf::Vector2f position;
-    sf::Vector2f heading;
-    float distance;
-};
+#include "C_AgentSight.hpp"
 
 class C_GeneticAgent : public Component
 {
@@ -23,7 +17,7 @@ public:
     void Update(float deltaTime) override;
     
     void SetEnergy(float amount);
-    float GetEnergy();
+    float GetEnergy() const;
     
     void SetObjectCollection(ObjectCollection* collection);
     
@@ -32,35 +26,30 @@ public:
     void SetNeuralNetwork(NeuralNetwork& network);
     const NeuralNetwork& GetNeuralNetwork() const;
     
-    void MutateNeuralNetwork();
-    
-    static float GetSightRadius();
+    float GetAgentRadius() const;
     
 private:
-    std::vector<AgentPositionData> GetAgentsInSight();
-    std::vector<float> CalculateNetworkInput(std::vector<AgentPositionData> positionData);
-    float Magnitude(const sf::Vector2f& a);
-    void ApplyDamageOnCollision(std::vector<AgentPositionData> agentsInSight, float deltaTime);
-    sf::Vector2f GetClosestAgentPosition(std::vector<AgentPositionData> agentsInSight);
+    std::vector<float> BuildNetworkInput();
     
-    static float sightRadius;
-    static float agentRadius;
-    
-    const int neuralNumOfInput = 2;
+    const int neuralNumOfInput = 7;
     const int neuralNumOfHiddenLayers = 1;
     const int neuralNumOfNeuronsInHiddenLayer = 10;
     const int neuralNumOfOutput = 2;
 
+    unsigned int windowWidth;
+    unsigned int windowHeight;
+    
+    float agentRadius;
     float maxMoveForce;
-    std::shared_ptr<C_Velocity> velocity;
     float energy;
-    float energyReductionMultiplier;
-    float energyReducedOnContact;
     float timeAlive;
-    float mutationRate;
+    std::shared_ptr<C_Velocity> velocity;
+    std::shared_ptr<C_AgentSight> sight;
     NeuralNetwork neuralNetwork;
     
     ObjectCollection* collection;
 };
+
+
 
 #endif /* C_GeneticAgent_hpp */

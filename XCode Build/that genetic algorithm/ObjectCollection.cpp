@@ -33,6 +33,8 @@ void ObjectCollection::ProcessNewObjects()
 {
     if (newObjects.size() > 0)
     {
+        objects.insert(objects.end(), newObjects.begin(), newObjects.end());
+        
         for (const auto& o : newObjects)
         {
             o->Awake();
@@ -43,8 +45,6 @@ void ObjectCollection::ProcessNewObjects()
             o->Start();
         }
        
-        objects.insert(objects.end(), newObjects.begin(), newObjects.end());
-
         newObjects.clear();
     }
 }

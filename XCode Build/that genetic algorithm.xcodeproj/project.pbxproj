@@ -36,6 +36,10 @@
 		E189800E20626C280092E575 /* ufo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E189800A20626C280092E575 /* ufo1.png */; };
 		E189800F20626C280092E575 /* ufo4.png in Resources */ = {isa = PBXBuildFile; fileRef = E189800B20626C280092E575 /* ufo4.png */; };
 		E189801220626FF30092E575 /* playerShip.png in Resources */ = {isa = PBXBuildFile; fileRef = E189801120626FF30092E575 /* playerShip.png */; };
+		E1EE671A206A27D3005E1891 /* C_Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE6718206A27D3005E1891 /* C_Label.cpp */; };
+		E1EE671E206F9193005E1891 /* C_DamageOnWallHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE671C206F9193005E1891 /* C_DamageOnWallHit.cpp */; };
+		E1EE6721206FAE45005E1891 /* C_AgentSight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE671F206FAE45005E1891 /* C_AgentSight.cpp */; };
+		E1EE6724206FB8E3005E1891 /* C_AgentCollision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE6722206FB8E3005E1891 /* C_AgentCollision.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,15 @@
 		E189800A20626C280092E575 /* ufo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo1.png; sourceTree = "<group>"; };
 		E189800B20626C280092E575 /* ufo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo4.png; sourceTree = "<group>"; };
 		E189801120626FF30092E575 /* playerShip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playerShip.png; sourceTree = "<group>"; };
+		E1EE6718206A27D3005E1891 /* C_Label.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_Label.cpp; sourceTree = "<group>"; };
+		E1EE6719206A27D3005E1891 /* C_Label.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_Label.hpp; sourceTree = "<group>"; };
+		E1EE671B206A55D6005E1891 /* larabiefont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = larabiefont.ttf; sourceTree = "<group>"; };
+		E1EE671C206F9193005E1891 /* C_DamageOnWallHit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_DamageOnWallHit.cpp; sourceTree = "<group>"; };
+		E1EE671D206F9193005E1891 /* C_DamageOnWallHit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_DamageOnWallHit.hpp; sourceTree = "<group>"; };
+		E1EE671F206FAE45005E1891 /* C_AgentSight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_AgentSight.cpp; sourceTree = "<group>"; };
+		E1EE6720206FAE45005E1891 /* C_AgentSight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_AgentSight.hpp; sourceTree = "<group>"; };
+		E1EE6722206FB8E3005E1891 /* C_AgentCollision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_AgentCollision.cpp; sourceTree = "<group>"; };
+		E1EE6723206FB8E3005E1891 /* C_AgentCollision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_AgentCollision.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +178,7 @@
 		E16F6F11205D0AA000486E2F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E1EE671B206A55D6005E1891 /* larabiefont.ttf */,
 				E189801120626FF30092E575 /* playerShip.png */,
 				E189800A20626C280092E575 /* ufo1.png */,
 				E189800920626C280092E575 /* ufo2.png */,
@@ -214,6 +228,14 @@
 				E174736A2062B93800D8333A /* C_GeneticAgent.hpp */,
 				E17473762063E78C00D8333A /* C_InstanceID.cpp */,
 				E17473772063E78C00D8333A /* C_InstanceID.hpp */,
+				E1EE6718206A27D3005E1891 /* C_Label.cpp */,
+				E1EE6719206A27D3005E1891 /* C_Label.hpp */,
+				E1EE671C206F9193005E1891 /* C_DamageOnWallHit.cpp */,
+				E1EE671D206F9193005E1891 /* C_DamageOnWallHit.hpp */,
+				E1EE671F206FAE45005E1891 /* C_AgentSight.cpp */,
+				E1EE6720206FAE45005E1891 /* C_AgentSight.hpp */,
+				E1EE6722206FB8E3005E1891 /* C_AgentCollision.cpp */,
+				E1EE6723206FB8E3005E1891 /* C_AgentCollision.hpp */,
 			);
 			name = ECS;
 			sourceTree = "<group>";
@@ -335,15 +357,19 @@
 				E116FDA520629E2700646B52 /* C_ScreenWrapAround.cpp in Sources */,
 				E1897FF7206263650092E575 /* ObjectCollection.cpp in Sources */,
 				E1897FFD206263650092E575 /* Window.cpp in Sources */,
+				E1EE6721206FAE45005E1891 /* C_AgentSight.cpp in Sources */,
 				E1897FF9206263650092E575 /* C_KeyboardMovement.cpp in Sources */,
 				E1897FFF206263650092E575 /* SceneSplashScreen.cpp in Sources */,
 				E1897FF6206263650092E575 /* Input.cpp in Sources */,
 				E1897FF5206263650092E575 /* SceneStateMachine.cpp in Sources */,
 				E17473722063B1A600D8333A /* NeuronLayer.cpp in Sources */,
+				E1EE671E206F9193005E1891 /* C_DamageOnWallHit.cpp in Sources */,
 				E1898001206263650092E575 /* SceneGame.cpp in Sources */,
 				E1897FF4206263650092E575 /* C_Transform.cpp in Sources */,
 				E1897FFE206263650092E575 /* Main.cpp in Sources */,
 				E1898000206263650092E575 /* Bitmask.cpp in Sources */,
+				E1EE671A206A27D3005E1891 /* C_Label.cpp in Sources */,
+				E1EE6724206FB8E3005E1891 /* C_AgentCollision.cpp in Sources */,
 				E17473682062B56D00D8333A /* C_Velocity.cpp in Sources */,
 				E1897FF8206263650092E575 /* WorkingDirectory.cpp in Sources */,
 				E174736F2063AEB900D8333A /* Neuron.cpp in Sources */,

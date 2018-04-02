@@ -18,16 +18,22 @@ public:
     
     int GetNumberOfWeights() const;
     
+    const std::vector<int>& GetSplitPoints() const;
+    
+    void Mutate(float mutationRate, bool clamp = false);
+    void MutateExchange();
+    
     int numOfInput; // Number of inputs for each neuron
     int numOfOutput; // Number of outputs of each neuron
     int numOfHiddenLayers; // Number of hidden layers
     int numOfNeuronsInHiddenLayers; // Number of neurons per hidden layer
-    
 private:
     float FastSigmoid(float input);
+    void CalculateSplitPoints();
     
     std::vector<NeuronLayer> layers;
     int bias;
+    std::vector<int> splitPoints;
 };
 
 #endif /* NeuralNetwork_hpp */
