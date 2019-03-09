@@ -13,13 +13,12 @@ public:
     
     void Update(float deltaTime) override;
     
-    void SetWindowSize(unsigned int width, unsigned int height);
+    void SetWindowSize(const sf::Vector2u& windowSize);
     
 private:
     std::shared_ptr<C_GeneticAgent> agent;
     
-    unsigned int windowWidth;
-    unsigned int windowHeight;
+    sf::Vector2u windowSize;
 };
 
 #endif /* C_DamageOnWallHit_hpp */

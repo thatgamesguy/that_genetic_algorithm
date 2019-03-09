@@ -16,6 +16,8 @@ public:
     
     void Update(float deltaTime) override;
     
+    void SetWindowSize(const sf::Vector2u& windowSize);
+    
     void SetEnergy(float amount);
     float GetEnergy() const;
     
@@ -36,8 +38,7 @@ private:
     const int neuralNumOfNeuronsInHiddenLayer = 10;
     const int neuralNumOfOutput = 2;
 
-    unsigned int windowWidth;
-    unsigned int windowHeight;
+    sf::Vector2u windowSize;
     
     float agentRadius;
     float maxMoveForce;

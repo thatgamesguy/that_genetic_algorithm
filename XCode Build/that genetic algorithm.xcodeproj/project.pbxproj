@@ -31,11 +31,11 @@
 		E1898000206263650092E575 /* Bitmask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1897FF0206263640092E575 /* Bitmask.cpp */; };
 		E1898001206263650092E575 /* SceneGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1897FF1206263640092E575 /* SceneGame.cpp */; };
 		E1898005206263750092E575 /* that_games_guy_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E1898003206263750092E575 /* that_games_guy_logo.png */; };
-		E189800C20626C280092E575 /* ufo3.png in Resources */ = {isa = PBXBuildFile; fileRef = E189800820626C280092E575 /* ufo3.png */; };
-		E189800D20626C280092E575 /* ufo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E189800920626C280092E575 /* ufo2.png */; };
-		E189800E20626C280092E575 /* ufo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E189800A20626C280092E575 /* ufo1.png */; };
-		E189800F20626C280092E575 /* ufo4.png in Resources */ = {isa = PBXBuildFile; fileRef = E189800B20626C280092E575 /* ufo4.png */; };
 		E189801220626FF30092E575 /* playerShip.png in Resources */ = {isa = PBXBuildFile; fileRef = E189801120626FF30092E575 /* playerShip.png */; };
+		E1BE7D4920E5035E002947E7 /* ufo2.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE7D4520E5035D002947E7 /* ufo2.png */; };
+		E1BE7D4B20E5035E002947E7 /* ufo4.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE7D4720E5035D002947E7 /* ufo4.png */; };
+		E1BE7D4C20E5035E002947E7 /* ufo3.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE7D4820E5035E002947E7 /* ufo3.png */; };
+		E1BE7D4E20E5039E002947E7 /* ufo1.png in Resources */ = {isa = PBXBuildFile; fileRef = E1BE7D4D20E5039E002947E7 /* ufo1.png */; };
 		E1EE671A206A27D3005E1891 /* C_Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE6718206A27D3005E1891 /* C_Label.cpp */; };
 		E1EE671E206F9193005E1891 /* C_DamageOnWallHit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE671C206F9193005E1891 /* C_DamageOnWallHit.cpp */; };
 		E1EE6721206FAE45005E1891 /* C_AgentSight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1EE671F206FAE45005E1891 /* C_AgentSight.cpp */; };
@@ -93,11 +93,11 @@
 		E1897FF2206263640092E575 /* Bitmask.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bitmask.hpp; sourceTree = "<group>"; };
 		E1897FF3206263650092E575 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		E1898003206263750092E575 /* that_games_guy_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = that_games_guy_logo.png; sourceTree = "<group>"; };
-		E189800820626C280092E575 /* ufo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo3.png; sourceTree = "<group>"; };
-		E189800920626C280092E575 /* ufo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo2.png; sourceTree = "<group>"; };
-		E189800A20626C280092E575 /* ufo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo1.png; sourceTree = "<group>"; };
-		E189800B20626C280092E575 /* ufo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo4.png; sourceTree = "<group>"; };
 		E189801120626FF30092E575 /* playerShip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playerShip.png; sourceTree = "<group>"; };
+		E1BE7D4520E5035D002947E7 /* ufo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo2.png; sourceTree = "<group>"; };
+		E1BE7D4720E5035D002947E7 /* ufo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo4.png; sourceTree = "<group>"; };
+		E1BE7D4820E5035E002947E7 /* ufo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo3.png; sourceTree = "<group>"; };
+		E1BE7D4D20E5039E002947E7 /* ufo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo1.png; sourceTree = "<group>"; };
 		E1EE6718206A27D3005E1891 /* C_Label.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = C_Label.cpp; sourceTree = "<group>"; };
 		E1EE6719206A27D3005E1891 /* C_Label.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = C_Label.hpp; sourceTree = "<group>"; };
 		E1EE671B206A55D6005E1891 /* larabiefont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = larabiefont.ttf; sourceTree = "<group>"; };
@@ -178,12 +178,12 @@
 		E16F6F11205D0AA000486E2F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E1BE7D4D20E5039E002947E7 /* ufo1.png */,
+				E1BE7D4520E5035D002947E7 /* ufo2.png */,
+				E1BE7D4820E5035E002947E7 /* ufo3.png */,
+				E1BE7D4720E5035D002947E7 /* ufo4.png */,
 				E1EE671B206A55D6005E1891 /* larabiefont.ttf */,
 				E189801120626FF30092E575 /* playerShip.png */,
-				E189800A20626C280092E575 /* ufo1.png */,
-				E189800920626C280092E575 /* ufo2.png */,
-				E189800820626C280092E575 /* ufo3.png */,
-				E189800B20626C280092E575 /* ufo4.png */,
 				E1898003206263750092E575 /* that_games_guy_logo.png */,
 			);
 			name = Resources;
@@ -321,12 +321,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E189800E20626C280092E575 /* ufo1.png in Resources */,
 				E1898005206263750092E575 /* that_games_guy_logo.png in Resources */,
+				E1BE7D4B20E5035E002947E7 /* ufo4.png in Resources */,
+				E1BE7D4E20E5039E002947E7 /* ufo1.png in Resources */,
+				E1BE7D4C20E5035E002947E7 /* ufo3.png in Resources */,
 				E189801220626FF30092E575 /* playerShip.png in Resources */,
-				E189800C20626C280092E575 /* ufo3.png in Resources */,
-				E189800D20626C280092E575 /* ufo2.png in Resources */,
-				E189800F20626C280092E575 /* ufo4.png in Resources */,
+				E1BE7D4920E5035E002947E7 /* ufo2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

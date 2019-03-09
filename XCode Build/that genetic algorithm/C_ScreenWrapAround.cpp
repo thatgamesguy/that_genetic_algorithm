@@ -1,17 +1,7 @@
 #include "C_ScreenWrapAround.hpp"
 #include "Object.hpp"
 
-C_ScreenWrapAround::C_ScreenWrapAround(Object* owner) : Component(owner), screenSize(800.f, 600.f), spriteHalfSize(0.f, 0.f) {}
-
-void C_ScreenWrapAround::SetSpriteHalfSize(const sf::Vector2f& spriteHalfSize)
-{
-    this->spriteHalfSize = spriteHalfSize;
-}
-
-void C_ScreenWrapAround::SetScreenSize(const sf::Vector2f& screenSize)
-{
-    this->screenSize = screenSize;
-}
+C_ScreenWrapAround::C_ScreenWrapAround(Object* owner) : Component(owner), screenSize(1920.f, 1080.f), spriteHalfSize(0.f, 0.f) {}
 
 void C_ScreenWrapAround::LateUpdate(float deltaTime)
 {
@@ -39,3 +29,15 @@ void C_ScreenWrapAround::LateUpdate(float deltaTime)
     
     owner->transform->SetPosition(newPos);
 }
+
+
+void C_ScreenWrapAround::SetSpriteHalfSize(const sf::Vector2f& spriteHalfSize)
+{
+    this->spriteHalfSize = spriteHalfSize;
+}
+
+void C_ScreenWrapAround::SetScreenSize(const sf::Vector2u& screenSize)
+{
+    this->screenSize = screenSize;
+}
+

@@ -1,7 +1,7 @@
 #include "C_DamageOnWallHit.hpp"
 #include "C_GeneticAgent.hpp"
 
-C_DamageOnWallHit::C_DamageOnWallHit(Object* owner) : Component(owner), windowWidth(800), windowHeight(600) {}
+C_DamageOnWallHit::C_DamageOnWallHit(Object* owner) : Component(owner), windowSize(1920, 1080) {}
 
 void C_DamageOnWallHit::Awake()
 {
@@ -14,14 +14,13 @@ void C_DamageOnWallHit::Update(float deltaTime)
     const float radius = agent->GetAgentRadius();
     const float halfRadius = radius * 0.5f;
     
-    if(pos.x <= radius || pos.x >= windowWidth - halfRadius || pos.y <= radius || pos.y >= windowHeight - halfRadius)
+    if(pos.x <= radius || pos.x >= windowSize.x - halfRadius || pos.y <= radius || pos.y >= windowSize.y - halfRadius)
     {
         agent->SetEnergy(0.f);
     }
 }
 
-void C_DamageOnWallHit::SetWindowSize(unsigned int width, unsigned int height)
+void C_DamageOnWallHit::SetWindowSize(const sf::Vector2u& windowSize)
 {
-    windowWidth = width;
-    windowHeight = height;
+    this->windowSize = windowSize;
 }

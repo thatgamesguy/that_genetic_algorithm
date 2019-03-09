@@ -22,6 +22,8 @@ public:
     
     void SetCenter(float x, float y);
     
+    sf::FloatRect GetSpriteRect() const;
+    
 private:
     ResourceAllocator<sf::Texture>* allocator;
     sf::Sprite sprite;

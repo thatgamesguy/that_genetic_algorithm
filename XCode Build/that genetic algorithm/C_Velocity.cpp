@@ -9,17 +9,7 @@ void C_Velocity::Awake()
 }
 
 void C_Velocity::Update(float deltaTime)
-{
-    /*
-    sf::Vector2f acceleration = force / mass;
-    velocity += acceleration * deltaTime;
-    */
-    //UpdateAngle();
-    
-    //Clamp();
-    
-    //velocity *= powf(damping, deltaTime);
-    
+{    
     UpdatePosition(deltaTime);
 }
 

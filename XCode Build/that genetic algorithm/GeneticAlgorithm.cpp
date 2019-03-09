@@ -1,8 +1,8 @@
 #include "GeneticAlgorithm.hpp"
 
-GeneticAlgorithm::GeneticAlgorithm(ObjectCollection& agents, ResourceAllocator<sf::Texture>& textureAllocator, WorkingDirectory& workingDir) : agents(agents), textureAllocator(textureAllocator), workingDir(workingDir), totalFitnessScore(0.f), mutationChance(0.1f), maxPoolSize(40), addedToSimulation(0), genNumber(0)
+GeneticAlgorithm::GeneticAlgorithm(ObjectCollection& agents, ResourceAllocator<sf::Texture>& textureAllocator, WorkingDirectory& workingDir, Window& window) : agents(agents), textureAllocator(textureAllocator), workingDir(workingDir), window(window), totalFitnessScore(0.f), mutationChance(0.1f), maxPoolSize(40), addedToSimulation(0), genNumber(0)
 {
-    const int initialAgentCount = 52;
+    const int initialAgentCount = 100;
     
     for (int i = 0; i < initialAgentCount; i++)
     {
@@ -12,11 +12,13 @@ GeneticAlgorithm::GeneticAlgorithm(ObjectCollection& agents, ResourceAllocator<s
 
 std::shared_ptr<C_GeneticAgent> GeneticAlgorithm::AddAgentToSimulation()
 {
+    const sf::Vector2u windowSize = window.GetSize();
+    
     const int minX = 50;
     const int minY = 50;
     
-    const int maxX = 750;
-    const int maxY = 550;
+    const int maxX = windowSize.x - minX;
+    const int maxY = windowSize.y - minY;
     
     const std::string spritePreName = "ufo";
     const std::string spritePostName = ".png";
@@ -33,19 +35,22 @@ std::shared_ptr<C_GeneticAgent> GeneticAlgorithm::AddAgentToSimulation()
     ufo->AddComponent<C_Velocity>();
     auto agent = ufo->AddComponent<C_GeneticAgent>();
     agent->SetObjectCollection(&agents);
+    agent->SetWindowSize(windowSize);
 
     auto sprite = ufo->AddComponent<C_Sprite>();
     sprite->SetTextureAllocator(&textureAllocator);
     const std::string ufoCount = std::to_string(1 + (std::rand() % (4 - 1 + 1))); // Selects a random ufo sprite.
     sprite->Load(workingDir.Get() + spritePreName + ufoCount + spritePostName);
-    sprite->SetCenter(23.f, 23.f);
+    sf::FloatRect spriteRect = sprite->GetSpriteRect();
+    sprite->SetCenter(spriteRect.width * 0.5f, spriteRect.height * 0.5f);
     
     const int randX = minX + (std::rand() % (maxX - minX + 1));
     const int randY = minY + (std::rand() % (maxY - minY + 1));
     ufo->transform->SetPosition(randX, randY);
     
     auto screenWrapAround = ufo->AddComponent<C_ScreenWrapAround>();
-    screenWrapAround->SetSpriteHalfSize({23.f, 23.f});
+    screenWrapAround->SetScreenSize(windowSize);
+    screenWrapAround->SetSpriteHalfSize({spriteRect.width * 0.5f, spriteRect.height * 0.5f});
     
     agents.Add(ufo);
     

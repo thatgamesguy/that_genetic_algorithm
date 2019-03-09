@@ -50,3 +50,8 @@ void C_Sprite::SetCenter(float x, float y)
 {
     sprite.setOrigin(x, y);
 }
+
+sf::FloatRect C_Sprite::GetSpriteRect() const
+{
+    return sprite.getLocalBounds();
+}

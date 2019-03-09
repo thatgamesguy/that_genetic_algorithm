@@ -1,7 +1,7 @@
 #include "C_GeneticAgent.hpp"
 #include "Object.hpp"
 
-C_GeneticAgent::C_GeneticAgent(Object* owner) : Component(owner), maxMoveForce(1000.f), energy(200.f), neuralNetwork(neuralNumOfInput, neuralNumOfHiddenLayers, neuralNumOfNeuronsInHiddenLayer, neuralNumOfOutput), timeAlive(0.f), agentRadius(28.f), windowWidth(800), windowHeight(600)
+C_GeneticAgent::C_GeneticAgent(Object* owner) : Component(owner), maxMoveForce(1400.f), energy(200.f), neuralNetwork(neuralNumOfInput, neuralNumOfHiddenLayers, neuralNumOfNeuronsInHiddenLayer, neuralNumOfOutput), timeAlive(0.f), agentRadius(28.f), windowSize(1920, 1080)
 {
     
 }
@@ -32,6 +32,11 @@ void C_GeneticAgent::Update(float deltaTime)
     const sf::Vector2f move = sf::Vector2f(x, y) * maxMoveForce * deltaTime;
     
     velocity->Set(move);
+}
+
+void C_GeneticAgent::SetWindowSize(const sf::Vector2u& windowSize)
+{
+    this->windowSize = windowSize;
 }
 
 void C_GeneticAgent::SetEnergy(float amount)
@@ -97,13 +102,13 @@ std::vector<float> C_GeneticAgent::BuildNetworkInput()
         
         float leftDistance = pos.x;
         float topDistance =  pos.y;
-        float rightDistance = fabs(windowWidth - pos.x);
-        float bottomDistance = fabs(windowHeight - pos.y);
+        float rightDistance = fabs(windowSize.x - pos.x);
+        float bottomDistance = fabs(windowSize.y - pos.y);
         
-        networkInput[3] = 1 - (leftDistance / windowWidth);
-        networkInput[4] = 1 - (rightDistance / windowWidth);
-        networkInput[5] = 1 - (topDistance / windowHeight);
-        networkInput[6] = 1 - (bottomDistance / windowHeight);
+        networkInput[3] = 1 - (leftDistance / windowSize.x);
+        networkInput[4] = 1 - (rightDistance / windowSize.x);
+        networkInput[5] = 1 - (topDistance / windowSize.y);
+        networkInput[6] = 1 - (bottomDistance / windowSize.y);
         
         // Could use below but found agents evolve quicker when using discrete values for each wall.
         //networkInput[3] = pos.x / screenWidth;

@@ -15,7 +15,7 @@
 class GeneticAlgorithm
 {
 public:
-    GeneticAlgorithm(ObjectCollection& agents, ResourceAllocator<sf::Texture>& textureAllocator, WorkingDirectory& workingDir);
+    GeneticAlgorithm(ObjectCollection& agents, ResourceAllocator<sf::Texture>& textureAllocator, WorkingDirectory& workingDir, Window& window);
     
     void Update(float deltaTime);
     
@@ -33,6 +33,7 @@ private:
     void SavePoolToFile();
     void LoadPoolFromFile();
     
+    Window& window;
     ObjectCollection& agents;
     ResourceAllocator<sf::Texture>& textureAllocator;
     WorkingDirectory& workingDir;

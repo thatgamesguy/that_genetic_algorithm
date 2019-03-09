@@ -10,12 +10,12 @@ public:
     
     void SetSpriteHalfSize(const sf::Vector2f& spriteSize);
     
-    void SetScreenSize(const sf::Vector2f& screenSize);
+    void SetScreenSize(const sf::Vector2u& screenSize);
     
     void LateUpdate(float deltaTime) override;
     
 private:
-    sf::Vector2f screenSize;
+    sf::Vector2u screenSize;
     sf::Vector2f spriteHalfSize;
 };
 
